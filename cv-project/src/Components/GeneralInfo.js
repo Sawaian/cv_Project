@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import uniqid from "uniqid";
 
 class GeneralInfo extends Component {
     constructor(props) {
@@ -17,6 +18,33 @@ class GeneralInfo extends Component {
         })
     }
 
+    onSubmitInfo = (e) => {
+        e.preventDefault()
+        console.log("Onsubmit")
+        this.setState({
+            infoArray: [...this.state.infoArray, this.state.generalInfo],
+            generalInfo:  {
+                id: uniqid(),
+                schoolName: '',
+                major: '',
+                years: '',
+              }
+        })
+        this.handleEdit()
+    }
+
+    handleDisplay = (e) => {
+        this.setState({
+            edit: false,
+        })
+    }
+
+    handleEdit = (e) => {
+        this.setState({
+            edit: true
+        })
+    }
+
 
     render() {
         const { generalInfo, infoArray, edit } = this.state;
@@ -24,7 +52,7 @@ class GeneralInfo extends Component {
         if (edit) {
             return (
                 <div>
-                    <button className="editButton" onClick={this.handleEdit}> Edit </button>
+                    <button className="editButton" onClick={this.handleDisplay}> Edit </button>
                     {
                         infoArray.map((info) => (
                             <div id={info.id}>
@@ -72,3 +100,4 @@ class GeneralInfo extends Component {
         }
     }
 }
+export default GeneralInfo
