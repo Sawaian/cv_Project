@@ -6,7 +6,7 @@ class GeneralInfo extends Component {
         super(props);
 
         this.state = {
-            generalInfo: { name: 'Mar', email: 'ma', phone: 'lake' },
+            generalInfo: { name: 'Mar', email: 'ma', phone: '616161' },
             infoArray: [],
             edit: false,
         }
@@ -56,8 +56,9 @@ class GeneralInfo extends Component {
                     {
                         infoArray.map((info) => (
                             <div id={info.id}>
-                                <p>{info.name}</p>
-                                <p>{info.email}</p>
+                                <p>Name: {info.name}</p>
+                                <p>Email: {info.email}</p>
+                                <p>Phone: {info.phone}</p>
                             </div>
                         ))
                     }
@@ -76,6 +77,7 @@ class GeneralInfo extends Component {
                             value={generalInfo.name}
                             type="text"
                             name="name"
+                            required
                         />
                         <label htmlFor="emailInput"> Email </label>
                         <input
@@ -84,6 +86,7 @@ class GeneralInfo extends Component {
                             value={generalInfo.email}
                             type="text"
                             name="email"
+                            required
                         />
                         <label htmlFor="phoneInput"> Phone </label>
                         <input
